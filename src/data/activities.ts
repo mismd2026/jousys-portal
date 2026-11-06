@@ -10,10 +10,10 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
-    id: 'helpdesk',
+    id: 'support',
     icon: '?',
-    title: 'ヘルプデスク',
-    summary: 'PC・プリンター・業務アプリの困りごとの一次窓口です。',
+    title: '問い合わせ・トラブル対応',
+    summary: 'PC・プリンター・業務アプリの困りごとに、情報システム部が直接対応します。',
     items: ['操作方法の問い合わせ対応', '故障受付・代替機の手配', 'リモートサポート'],
   },
   {
@@ -67,9 +67,9 @@ export const ANNOUNCEMENTS: Announcement[] = [
 ];
 
 export const CONTACT = {
-  name: '情報システム部 ヘルプデスク',
+  name: '情報システム部',
   hours: '平日 9:00〜18:00',
   ext: '内線 1234',
-  mail: 'helpdesk@example.co.jp',
+  mail: 'jouhou-system@example.co.jp',
   teams: 'Teams チャネル「情シス問い合わせ」',
 };

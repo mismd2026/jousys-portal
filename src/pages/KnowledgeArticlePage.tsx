@@ -63,7 +63,7 @@ export default function KnowledgeArticlePage() {
         <div className="card stack">
           <h3>解決しない場合</h3>
           <p className="small">
-            症状・試したこと・画面の写真を添えてヘルプデスクへご連絡ください。
+            症状・試したこと・画面の写真を添えて情報システム部へご連絡ください。
           </p>
           <Link to="/status" className="btn btn-sm">
             障害通知を確認

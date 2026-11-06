@@ -72,7 +72,7 @@ export default function KnowledgePage() {
       <p className="muted small">{results.length} 件</p>
       {results.length === 0 ? (
         <div className="card">
-          <p>該当する記事が見つかりませんでした。キーワードを変えるか、ヘルプデスクへお問い合わせください。</p>
+          <p>該当する記事が見つかりませんでした。キーワードを変えるか、情報システム部へお問い合わせください。</p>
         </div>
       ) : (
         <div className="article-grid">
