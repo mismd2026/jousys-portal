@@ -31,7 +31,13 @@ export default function Layout() {
         <div className="container header-inner">
           <Link to="/" className="brand">
             <span className="brand-mark" aria-hidden>
-              IT
+              <svg viewBox="0 0 36 36">
+                <rect width="36" height="36" rx="9" fill="#fff" />
+                <path d="M18 29V17" stroke="#2d5a34" strokeWidth="2" strokeLinecap="round" />
+                <path d="M18 20c-6 0-9.5-3.5-10-9 6 0 10 3.5 10 9z" fill="#4c8b3a" />
+                <path d="M18 17c5 0 8.5-3 9-8-5.5 0-9 3-9 8z" fill="#8cc63f" />
+                <circle cx="28" cy="27" r="2.2" fill="#f2d65c" opacity=".9" />
+              </svg>
             </span>
             <span>
               <span className="brand-title">情報システム部ポータル</span>
