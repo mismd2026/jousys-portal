@@ -86,10 +86,14 @@ npm test         # ユニットテスト
 npm run build    # 本番ビルド（dist/）
 ```
 
-### セキュリティ動画の設定
+### セキュリティ動画
 
-`src/data/videos.ts` の各動画の `src` に YouTube の埋め込み URL（`https://www.youtube.com/embed/...`）
-または動画ファイルの URL を設定すると再生できます。未設定の動画は「準備中」と表示されます。
+IPA（独立行政法人情報処理推進機構）[「映像で知る情報セキュリティ」](https://www.ipa.go.jp/security/videos/list.html)
+の YouTube 公開動画を埋め込みで利用しています（`src/data/videos.ts` の `youtubeId`）。
+IPA の案内では、IPA Channel の動画はブラウザで再生して社内研修等に利用でき、事前申請は不要とされています。
+
+動画ファイル（mp4）は IPA の申込ページ経由での提供のため、このリポジトリには含めていません。
+社内で入手した動画ファイルを使う場合は、社内サーバー等に置いて `src` に URL を設定してください（`youtubeId` より `src` は後順位）。
 
 ## デプロイ
 

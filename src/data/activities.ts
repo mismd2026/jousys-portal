@@ -62,7 +62,7 @@ export interface Announcement {
 export const ANNOUNCEMENTS: Announcement[] = [
   { date: '2026-11-05', category: 'メンテナンス', title: '11/14(土) 22:00〜 本社ネットワーク機器のファームウェア更新を行います' },
   { date: '2026-11-01', category: '重要', title: '多要素認証（MFA）の登録期限は 11/30 です。未登録の方はナレッジを参照してください' },
-  { date: '2026-10-24', category: 'お知らせ', title: '新しいセキュリティ教育動画「生成AIの安全な使い方」を公開しました' },
+  { date: '2026-10-24', category: 'お知らせ', title: 'セキュリティ教育動画に IPA「ビジネスメール詐欺」「偽警告」などを追加しました' },
   { date: '2026-10-10', category: 'お知らせ', title: '本社 2F 複合機の入れ替えが完了しました。ドライバの再設定をお願いします' },
 ];
 

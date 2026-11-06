@@ -1,5 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { VIDEOS, type SecurityVideo } from '../data/videos';
+import {
+  VIDEOS,
+  VIDEO_SOURCE,
+  type SecurityVideo,
+  youtubeEmbedUrl,
+  youtubeThumbUrl,
+  youtubeWatchUrl,
+} from '../data/videos';
 
 const WATCHED_KEY = 'jousys.videos.watched.v1';
 
@@ -46,6 +53,13 @@ export default function VideosPage() {
         <div>
           <h1>情報セキュリティ動画</h1>
           <p className="muted">全従業員向けのセキュリティ教育動画です。「必須」の動画は年度内に受講してください。</p>
+          <p className="muted small">
+            動画出典：
+            <a href={VIDEO_SOURCE.url} target="_blank" rel="noreferrer">
+              {VIDEO_SOURCE.name}
+            </a>
+            （独立行政法人情報処理推進機構）
+          </p>
         </div>
       </div>
 
@@ -86,10 +100,16 @@ export default function VideosPage() {
           return (
             <article key={v.id} className="card video-card">
               <button className={`video-thumb thumb-${i % 6}`} onClick={() => setPlaying(v)} aria-label={`${v.title}を再生`}>
+                {v.youtubeId && <img
+                    src={youtubeThumbUrl(v.youtubeId)}
+                    alt=""
+                    loading="lazy"
+                    onError={(e) => (e.currentTarget.style.display = 'none')}
+                  />}
                 <span className="play" aria-hidden>
                   ▶
                 </span>
-                <span className="duration">{v.durationMin}:00</span>
+                <span className="duration">約{v.durationMin}分</span>
                 {done && <span className="watched-flag">受講済み</span>}
               </button>
               <div className="video-body">
@@ -115,24 +135,18 @@ export default function VideosPage() {
               </button>
             </div>
             <div className="player">
-              {playing.src ? (
-                playing.src.includes('youtube.com/embed') ? (
-                  <iframe
-                    src={playing.src}
-                    title={playing.title}
-                    allow="accelerometer; encrypted-media; picture-in-picture"
-                    allowFullScreen
-                  />
-                ) : (
-                  <video src={playing.src} controls onEnded={() => markWatched(playing.id)} />
-                )
+              {playing.youtubeId ? (
+                <iframe
+                  src={youtubeEmbedUrl(playing.youtubeId)}
+                  title={playing.title}
+                  allow="accelerometer; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : playing.src ? (
+                <video src={playing.src} controls onEnded={() => markWatched(playing.id)} />
               ) : (
                 <div className="player-placeholder">
-                  <span className="play" aria-hidden>
-                    ▶
-                  </span>
                   <p>動画は準備中です</p>
-                  <p className="small">src/data/videos.ts の src に動画 URL を設定すると再生できます</p>
                 </div>
               )}
             </div>
@@ -147,6 +161,12 @@ export default function VideosPage() {
                 </ul>
               </div>
               <div className="modal-actions">
+                {playing.youtubeId && (
+                  <a className="small" href={youtubeWatchUrl(playing.youtubeId)} target="_blank" rel="noreferrer">
+                    YouTube で開く
+                  </a>
+                )}
+                <span className="spacer" />
                 {watched.includes(playing.id) ? (
                   <>
                     <span className="all-clear">✓ 受講済み</span>
